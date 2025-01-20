@@ -5,6 +5,8 @@ from datetime import datetime, time
 import time as tm
 from contrato import Vendas
 
+from database import salvar_no_postgres
+
 
 def main():
     st.title("Sistema de CRM e Vendas")
@@ -27,15 +29,11 @@ def main():
                     produto = produto)
             
             st.write(venda)
+            salvar_no_postgres(venda)
             
         except Exception as e :
             st.error(f'Erro ao salvar:  \n{e}')
 
-        # st.write(f'Email: {email}')
-        # st.write(f'data: {data_hora}')
-        # st.write(f'Valor: {valor}')
-        # st.write(f'Quantidade: {quantidade}')
-        # st.write(f'Produto: {produto}')
 
 
 
